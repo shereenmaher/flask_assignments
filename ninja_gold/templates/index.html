@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Ninja Gold</h1>
+
+        <div class="gold">
+            <strong>Your Gold:</strong>
+            <span>{{ gold }}</span>
+        </div>
+
+        <div class="buildings">
+
+            <!-- FARM -->
+            <div class="building">
+                <h2>Farm</h2>
+                <p>(earns 10-20 gold)</p>
+
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+
+            <!-- CAVE -->
+            <div class="building">
+                <h2>Cave</h2>
+                <p>(earns 5-10 gold)</p>
+
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+
+            <!-- HOUSE -->
+            <div class="building">
+                <h2>House</h2>
+                <p>(earns 2-5 gold)</p>
+
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+
+            <!-- CASINO -->
+            <div class="building">
+                <h2>Casino</h2>
+                <p>(earns/takes 0-50 gold)</p>
+
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="casino">
+                    <input type="submit" value="Find Gold!">
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="activities">
+
+            <h2>Activities:</h2>
+
+            {% for activity in activities %}
+                <p>{{ activity }}</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

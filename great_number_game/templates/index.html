@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>I'm thinking of a number between 1 and 100...</h1>
+
+        {% if session.get("result") %}
+            <h2>{{ session["result"] }}</h2>
+        {% endif %}
+
+        {% if session.get("result") == "Correct! You guessed the number!" %}
+
+            <a href="/reset">
+                <button>Play Again</button>
+            </a>
+
+        {% else %}
+
+            <form action="/guess" method="POST">
+
+                <input
+                    type="number"
+                    name="guess"
+                    min="1"
+                    max="100"
+                    placeholder="Enter your guess"
+                    required
+                >
+
+                <button type="submit">Guess</button>
+
+            </form>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
